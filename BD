@@ -1,0 +1,14 @@
+create database java;
+use java;
+create table tblpersonas(
+idpersonas varchar (15), nombre char (30), paterno char(15), materno char(15), email varchar(30));
+delimiter $$ 
+create procedure spaltapersona(in nom varchar(15), in pat varchar(15), in mat varchar(15), in mail varchar(15) )
+begin
+declare idper int;
+declare existe int;
+select existe = count(*) from tblpersonas where nombre = nom and paterno = pat and materno = mat and eamil = mail;
+select idper = ifnull(max(idpersona), 0) + 1 from tblpersonas;
+select idper as idpersonas;
+end $$ 
+delimiter ;
